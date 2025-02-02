@@ -1,0 +1,16 @@
+import helloWasm from "./main.wasm?module";
+
+export const runtime = "edge";
+
+export async function GET() {
+  await import("./wasm_exec.js");
+
+  const wasmBuffer = new Uint8Array(helloWasm).buffer;
+
+  console.log(wasmBuffer);
+
+  const helloWasmModule = await WebAssembly.instantiate(helloWasm);
+  const parse = helloWasm.exports.parse as () => string;
+
+  return Response.json({ parse });
+}
