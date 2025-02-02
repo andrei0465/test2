@@ -6,10 +6,10 @@ let wasmModule: WebAssembly.Module | null = null; // Cache WASM module
 async function getWasmInstance() {
   // Fetch and compile WASM only if it's not cached
   const response = await fetch(
-    `https://raw.githubusercontent.com/andrei0465/nuxt-studio/refs/heads/main/module.txt`,
-    {
-      cache: "force-cache",
-    }
+    `https://raw.githubusercontent.com/andrei0465/nuxt-studio/refs/heads/main/module.txt`
+    // {
+    //   cache: "force-cache",
+    // }
   );
 
   if (!response.ok) {
