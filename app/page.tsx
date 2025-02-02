@@ -24,7 +24,7 @@ function useWasm(path: string) {
 
         var wasm;
 
-        const resp = await fetch(`http://lite:3000/${WASM_URL}`);
+        const resp = await fetch(`${window.location.origin}/${WASM_URL}`);
         const bytes = await resp.arrayBuffer();
         const obj = await WebAssembly.instantiate(bytes, go.importObject);
         wasm = obj.instance;
